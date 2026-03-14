@@ -30,11 +30,11 @@ jobs:
 
       - name: Docker Build & Push
         run: |
-          # 1. Build (ensure you have a Dockerfile in your repo)
-          docker build -t hs2-hs-new-docker.jfrog.io/bank-app:${{ github.run_number }} .
+          # 1. Build - Use the format: <DOMAIN>/<VIRTUAL_REPO>/<IMAGE_NAME>:<TAG>
+          docker build -t hs2-hs-new-docker.jfrog.io/hs-dock-demo-docker/bank-app:${{ github.run_number }} .
           
-          # 2. Push image & link to build-info
-          jf docker push hs2-hs-new-docker.jfrog.io/bank-app:${{ github.run_number }} \
+          # 2. Push - Use the exact same tag
+          jf docker push hs2-hs-new-docker.jfrog.io/hs-dock-demo-docker/bank-app:${{ github.run_number }} \
             --build-name="bank-payments-api" \
             --build-number="${{ github.run_number }}"
 
