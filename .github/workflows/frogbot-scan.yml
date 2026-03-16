@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Frogbot
-        uses: jfrog/setup-frogbot@v2
+        uses: jfrog/frogbot@v2
         with:
           # This tells Frogbot to scan the PR for vulnerabilities
           # and post results as a comment.
