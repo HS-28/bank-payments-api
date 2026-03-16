@@ -1,0 +1,31 @@
+name: "Frogbot Pull Request Scan"
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  id-token: write # Required for OIDC
+  contents: read
+  pull-requests: write # Required for Frogbot to post comments on your PR
+
+jobs:
+  frogbot-scan:
+    runs-on: ubuntu-latest
+    env:
+      # Replace these with your actual JFrog URL
+      JF_URL: https://${{ vars.JF_URL }}
+      # This uses the same OIDC provider you used in your deploy.yml
+      JF_OIDC_PROVIDER_NAME: hs-gh
+      # Standard GitHub token provided by the runner
+      JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Frogbot
+        uses: jfrog/setup-frogbot@v2
+        with:
+          # This tells Frogbot to scan the PR for vulnerabilities
+          # and post results as a comment.
+          oidc-provider-name: hs-gh
