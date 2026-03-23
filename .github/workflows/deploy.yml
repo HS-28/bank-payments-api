@@ -28,7 +28,7 @@ jobs:
         run: |
           echo "test content" > test-artifact.txt
           # Replace with your project's repository
-          jf rt pull hs-dock-demo-docker/memcached:bookworm
+          jf docker pull hs-dock-demo-docker/memcached:bookworm
           jf docker scan
-          jf rt push hs-dock-demo-docker/memcached:bookworm
+          jf docker push hs-dock-demo-docker/memcached:bookworm
           jf rt bp hs-oidc 1
