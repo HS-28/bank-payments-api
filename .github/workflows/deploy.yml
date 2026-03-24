@@ -25,6 +25,8 @@ jobs:
           
           
       - name: Upload Test Artifact
+        env:
+          JFROG_CLI_LOG_LEVEL: DEBUG
         run: |
           
           # Replace with your project's repository
