@@ -21,7 +21,7 @@ jobs:
         env:
           JF_URL: https://${{ vars.JF_URL }}/
         with:
-          oidc-provider-name: hs-gh # Must match JFrog Provider Name
+          oidc-provider-name: hs-gh-test # Must match JFrog Provider Name
           
           
       - name: Upload Test Artifact
