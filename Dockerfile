@@ -4,6 +4,7 @@
 FROM nginx:1.19 as builder
 
 # Create a dummy "optimized configuration file" in this stage
+RUN npm install lodash@4.17.15
 RUN echo "Banking API v1.0 - High Performance Config" > /opt/optimized_app.conf
 
 # ------------------------------------------------------------------
